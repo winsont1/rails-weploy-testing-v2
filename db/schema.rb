@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2019_04_25_104755) do
 
   create_table "timesheets", force: :cascade do |t|
     t.date "date"
-    t.time "start_time"
-    t.time "finish_time"
+    t.datetime "start_time"
+    t.datetime "finish_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
