@@ -17,10 +17,10 @@ gem 'webpacker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
-  gem 'rspec-rails'
 end
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'listen', '~> 3.0.5'
@@ -28,3 +28,5 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
 end
+
+gem 'simplecov', require: false, group: :test

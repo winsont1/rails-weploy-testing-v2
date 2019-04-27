@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Timesheets logged</h1>
+
+  <table class="table table-bordered table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">Finish Time</th>
+  </tr>
+  </thead>
+  <tbody>
+
+    <% i = 0 %>
+    <% @timesheets.each do |timesheet| %>
+      <tr>
+        <th scope="row"><%= i %></th>
+        <td><%= timesheet.date %></td>
+        <td><%= timesheet.start_time %></td>
+        <td><%= timesheet.finish_time %></td>
+      </tr>
+      <% i += 1 %>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
