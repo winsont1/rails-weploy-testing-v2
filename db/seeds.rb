@@ -3,7 +3,7 @@ Timesheet.destroy_all
 puts "Creating 10 Fake Timesheets!"
 
 
-Timesheet.new(date: "07/01/2019", start_time: "10:00", finish_time: "10:00").save
-Timesheet.new(date: "08/01/2019", start_time: "9:00", finish_time: "9:00").save
 
+Timesheet.new(date: Date.new(2018,7,1), start_time: DateTime.new(2018,7,1,10,15,0), finish_time: DateTime.new(2018,7,1,11,15,0)).save
+Timesheet.new(date: Date.new(2019,4,1), start_time: DateTime.new(2019,4,1,10,15,0), finish_time: DateTime.new(2019,4,1,11,15,0)).save
 
