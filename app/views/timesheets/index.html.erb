@@ -1,35 +1,12 @@
 <div class="container">
-  <h1>Timesheets logged</h1>
-
-  <table class="table table-bordered table-hover text-center">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Date</th>
-        <th scope="col">Start Time</th>
-        <th scope="col">Finish Time</th>
-    </tr>
-    </thead>
-    <tbody>
-
-      <% i = 0 %>
-      <% @timesheets.each do |timesheet| %>
-        <% if timesheet.start_time.dst? %>
-         <% start_time = timesheet.start_time - 3600 * 11 %>
-         <% finish_time = timesheet.finish_time - 3600 * 11 %>
-        <% else %>
-         <% start_time = timesheet.start_time - 3600 * 10 %>
-         <% finish_time = timesheet.finish_time - 3600 * 10 %>
-        <% end %>
-        <tr>
-          <th scope="row"><%= i %></th>
-          <td><%= timesheet.date %></td>
-          <td><%= start_time.strftime("%H:%M") %></td>
-          <td><%= finish_time.strftime("%H:%M") %></td>
-        </tr>
-        <% i += 1 %>
-      <% end %>
-    </tbody>
-  </table>
+  <h1>Timesheet Entries</h1>
+  <ul>
+    <% @timesheets.each do |timesheet| %>
+    <li>
+      <%= "#{timesheet.start_time.strftime("%d/%m/%Y")}: #{timesheet.start_time.strftime("%H:%M")} -
+      #{timesheet.finish_time.strftime("%H:%M")} $xxxx" %>
+    </li>
+    <% end %>
+  </ul>
   <%= link_to "Log new timesheet", new_timesheet_path %>
 </div>
