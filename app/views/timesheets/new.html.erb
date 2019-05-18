@@ -1,5 +1,4 @@
 <div class="container">
-  <h2>New Timesheet Entry</h2>
   <div class="error-messages">
     <% @timesheet.errors.each do |attr, msg| %>
       <li>
@@ -7,17 +6,18 @@
       </li>
     <% end %>
   </div>
+  <h2>New Timesheet Entry</h2>
   <%= simple_form_for(@timesheet) do |f| %>
     <p>
     <%= f.label :date, "Date: " %>
     <%= f.date_select(:date) %>
     </p>
     <p>
-    <%= f.label :start_time, "Start Time" %>
+    <%= f.label :start_time, "Start Time: " %>
     <%= f.time_select(:start_time) %>
     </p>
     <p>
-    <%= f.label :finish_time, "Finish Time" %>
+    <%= f.label :finish_time, "Finish Time: " %>
     <%= f.time_select(:finish_time) %>
     </p>
     <%= f.submit %>

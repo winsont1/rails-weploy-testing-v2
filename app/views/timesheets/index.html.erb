@@ -1,12 +1,14 @@
+<div class="navbar">
+    <%= link_to "Create Timesheet Entry", new_timesheet_path %>
+</div>
 <div class="container">
   <h1>Timesheet Entries</h1>
   <ul>
     <% @timesheets.each do |timesheet| %>
     <li>
       <%= "#{timesheet.start_time.strftime("%d/%m/%Y")}: #{timesheet.start_time.strftime("%H:%M")} -
-      #{timesheet.finish_time.strftime("%H:%M")} $xxxx" %>
+      #{timesheet.finish_time.strftime("%H:%M")} $#{timesheet.dollar_value}" %>
     </li>
     <% end %>
   </ul>
-  <%= link_to "Log new timesheet", new_timesheet_path %>
 </div>
