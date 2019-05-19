@@ -2,11 +2,11 @@
   <div class="error-messages">
     <% @timesheet.errors.each do |attr, msg| %>
       <li>
-        <%= @timesheet.errors.full_messages_for(attr).first if @timesheet.errors[attr].first == msg %>
+        - <%= @timesheet.errors.full_messages_for(attr).first if @timesheet.errors[attr].first == msg %>
       </li>
     <% end %>
   </div>
-  <h2>New Timesheet Entry</h2>
+  <h1>Create Timesheet Entry</h1>
   <%= simple_form_for(@timesheet) do |f| %>
     <p>
     <%= f.label :date, "Date: " %>
@@ -20,7 +20,7 @@
     <%= f.label :finish_time, "Finish Time: " %>
     <%= f.time_select(:finish_time) %>
     </p>
-    <%= f.submit %>
+    <%= f.button :submit, "Create" , class: 'button-create-large'%>
   <% end %>
 </div>
 

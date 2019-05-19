@@ -1,12 +1,36 @@
-.create-button {
-  min-height: 50px;
-
-  a{
-    border: 3px black solid;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
+.button-create {
+  border: 3px black solid;
+  padding: 10px;
+  margin: 10px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  font-weight: bold;
+  &:hover{
     text-decoration: none;
+    color: #689F38;
+    border: 3px #689F38 solid;
+  }
+}
+
+.button-create-large {
+  border: 3px black solid;
+  padding: 10px;
+  margin: 10px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+  &:hover {
+    text-decoration: none;
+    color: #689F38;
+    border: 3px #689F38 solid;
   }
 }
 
