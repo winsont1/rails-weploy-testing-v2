@@ -11,14 +11,18 @@ class Timesheet < ApplicationRecord
   private
 
   def valid_start_time
-    if start_time > DateTime.current
-      errors.add(:start_time, "cannot be in the future")
+    unless start_time.nil?
+      if start_time > DateTime.current
+        errors.add(:start_time, "cannot be in the future")
+      end
     end
   end
 
   def valid_finish_time
-    if start_time > finish_time
-      errors.add(:start_time, "cannot be later than finish time")
+    unless start_time.nil? || finish_time.nil?
+      if start_time > finish_time
+        errors.add(:start_time, "cannot be later than finish time")
+      end
     end
   end
 
@@ -51,67 +55,41 @@ class Timesheet < ApplicationRecord
     even_days = ['Tuesday', 'Thursday']
     rates = { odd_inside: 22, odd_outside: 33, even_inside: 25, even_outside: 35 , weekend: 47 }
 
-
     if odd_days.include? date.strftime("%A")
-
-
       if start_time >= inside_starting_time && finish_time <= inside_ending_time
         self.dollar_value = TimeDifference.between(start_time, finish_time).in_hours * rates[:odd_inside]
-
       elsif start_time < inside_starting_time && finish_time < inside_starting_time
         self.dollar_value = TimeDifference.between(start_time, finish_time).in_hours * rates[:odd_outside]
       elsif start_time < inside_starting_time && finish_time > inside_ending_time
-
         self.dollar_value = both_outside_hours(start_time, finish_time, inside_starting_time, inside_ending_time, rates[:odd_inside], rates[:odd_outside])
-
       elsif start_time < inside_starting_time && finish_time < inside_ending_time
-
         self.dollar_value = before_outside_hours(start_time, finish_time, inside_starting_time, rates[:odd_inside], rates[:odd_outside])
-
       elsif start_time > inside_ending_time && finish_time > inside_ending_time
-
         self.dollar_value = TimeDifference.between(start_time, finish_time).in_hours * rates[:odd_outside]
-
       elsif start_time > inside_starting_time && finish_time > inside_ending_time
-
         self.dollar_value = after_outside_hours(start_time, finish_time, inside_ending_time, rates[:odd_inside], rates[:odd_outside])
-
       else
-
         self.dollar_value = 0
       end
 
     elsif even_days.include? date.strftime("%A")
-
       if start_time >= inside_starting_time && finish_time <= inside_ending_time
-
         self.dollar_value = TimeDifference.between(start_time, finish_time).in_hours * rates[:even_inside]
-
       elsif start_time < inside_starting_time && finish_time < inside_starting_time
-
         self.dollar_value = TimeDifference.between(start_time, finish_time).in_hours * rates[:even_outside]
       elsif start_time < inside_starting_time && finish_time > inside_ending_time
-
         self.dollar_value = both_outside_hours(start_time, finish_time, inside_starting_time, inside_ending_time, rates[:even_inside], rates[:even_outside])
-
       elsif start_time < inside_starting_time && finish_time < inside_ending_time
-
         self.dollar_value = before_outside_hours(start_time, finish_time, inside_starting_time, rates[:even_inside], rates[:even_outside])
-
       elsif start_time > inside_ending_time && finish_time > inside_ending_time
-
         self.dollar_value = TimeDifference.between(start_time, finish_time).in_hours * rates[:even_outside]
       elsif start_time > inside_starting_time && finish_time > inside_ending_time
-
         self.dollar_value = after_outside_hours(start_time, finish_time, inside_ending_time, rates[:even_inside], rates[:even_outside])
-
       end
 
     else
-
       self.dollar_value = TimeDifference.between(start_time, finish_time).in_hours * rates[:weekend]
     end
-
   end
 
 
