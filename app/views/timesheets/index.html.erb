@@ -5,7 +5,7 @@
   <h1>Timesheet Entries</h1>
   <ul>
     <% @timesheets.each do |timesheet| %>
-    <li>
+    <li class="timesheet-body">
       <%= "#{timesheet.start_time.strftime("%d/%m/%Y")}: #{timesheet.start_time.strftime("%H:%M")} -
       #{timesheet.finish_time.strftime("%H:%M")}  $#{timesheet.dollar_value}" %>
     </li>

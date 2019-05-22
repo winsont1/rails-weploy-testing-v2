@@ -11,7 +11,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -19,11 +19,11 @@ Bundler.require(*Rails.groups)
 
 module RailsWeployTestingV2
   class Application < Rails::Application
-    config.generators do |generate|
-          generate.assets false
-          generate.helper false
-          generate.test_framework  :test_unit, fixture: false
-        end
+    # config.generators do |generate|
+    #       generate.assets false
+    #       generate.helper false
+    #       generate.test_framework  :test_unit, fixture: false
+    #     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
@@ -33,7 +33,7 @@ module RailsWeployTestingV2
     # the framework and any gems in your application.
 
     # Don't generate system test files.
-    config.generators.system_tests = nil
+    # config.generators.system_tests = nil
     config.time_zone = 'Melbourne'
     config.active_record.default_timezone = :local
     config.active_record.time_zone_aware_attributes = false
