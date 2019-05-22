@@ -21,6 +21,9 @@ From root folder, please key in the following command. This will create the data
     $ rails db:seed
     $ rails s
 
-## To do
-* Build out more comprehensive tests
-* Improve Front end
+## Test Instructions
+To run tests for the timesheet application, please run the following commands:
+
+    $ rails test:system
+    $ rails test:models
+    $ rails test:controllers

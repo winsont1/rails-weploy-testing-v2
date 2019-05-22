@@ -10,14 +10,12 @@ class TimesheetTest < ApplicationSystemTestCase
 
   test "lets a user log a new timesheet" do
     visit "/timesheets/new"
-    # save_and_open_screenshot
+
     select_date("2015,May,10", :from => "Date")
     select_time("10","00", :from => "Start Time")
     select_time("17","00", :from => "Finish Time")
-    # save_and_open_screenshot
 
     click_on 'Create'
-    # save_and_open_screenshot
 
     # Should be redirected to Home with new timesheet
     assert_equal root_path, page.current_path
@@ -28,16 +26,13 @@ class TimesheetTest < ApplicationSystemTestCase
     visit "/timesheets/new"
     timesheet_count_before = Timesheet.count
 
-    # save_and_open_screenshot
     select_date("2015,May,10", :from => "Date")
     select_time("10","00", :from => "Start Time")
     select_time("10","00", :from => "Finish Time")
-    # save_and_open_screenshot
 
     click_on 'Create'
-    # save_and_open_screenshot
 
-    # Should be redirected to Home with new timesheet
+    # Should be redirected to same page with errors
     assert_equal "/timesheets", page.current_path
     assert_equal timesheet_count_before, Timesheet.count
   end
@@ -46,16 +41,13 @@ class TimesheetTest < ApplicationSystemTestCase
     visit "/timesheets/new"
     timesheet_count_before = Timesheet.count
 
-    # save_and_open_screenshot
     select_date("2015,May,10", :from => "Date")
     select_time("17","00", :from => "Start Time")
     select_time("10","00", :from => "Finish Time")
-    # save_and_open_screenshot
 
     click_on 'Create'
-    save_and_open_screenshot
 
-    # Should be redirected to Home with new timesheet
+    # Should be redirected to same page with errors
     assert_equal "/timesheets", page.current_path
     assert_equal timesheet_count_before, Timesheet.count
   end
@@ -64,22 +56,18 @@ class TimesheetTest < ApplicationSystemTestCase
     visit "/timesheets/new"
     timesheet_count_before = Timesheet.count
 
-    # save_and_open_screenshot
     select_date("2020,April,10", :from => "Date")
     select_time("10","00", :from => "Start Time")
     select_time("17","00", :from => "Finish Time")
-    # save_and_open_screenshot
 
     click_on 'Create'
-    save_and_open_screenshot
 
-    # Should be redirected to Home with new timesheet
+    # Should be redirected to same page with errors
     assert_equal "/timesheets", page.current_path
     assert_equal timesheet_count_before, Timesheet.count
   end
 
   #TODO: Create test to prevent overlapping timesheets
-
 
   private
 

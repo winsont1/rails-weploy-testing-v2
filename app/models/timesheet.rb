@@ -33,7 +33,7 @@ class Timesheet < ApplicationRecord
       if (start_time..finish_time).cover? timesheet.start_time
         errors.add(:start_time, "is overlapping with other timesheets")
       elsif (start_time..finish_time).cover? timesheet.finish_time
-        errors.add(:finsh_time, "is overlapping with other timesheets")
+        errors.add(:finish_time, "is overlapping with other timesheets")
       end
     end
   end
