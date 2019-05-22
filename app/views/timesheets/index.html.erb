@@ -1,7 +1,5 @@
-<div class="navbar"></div>
+<div class="container-body">
   <%= link_to "Create Timesheet Entry", new_timesheet_path,  { :class=>"button-create" } %>
-
-<div class="container">
   <h1>Timesheet Entries</h1>
   <ul>
     <% @timesheets.each do |timesheet| %>
