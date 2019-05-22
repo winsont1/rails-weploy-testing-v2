@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/winsont1/rails-timesheets-app.svg?branch=master)](https://travis-ci.org/winsont1/rails-timesheets-app)
+
 # Weploy Coding test
 
 ## Overview
