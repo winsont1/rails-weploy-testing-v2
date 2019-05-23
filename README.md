@@ -1,4 +1,4 @@
-# Weploy Coding test
+# Timesheets App Challenge
 
 ## Overview
 This app allows you to record and update records of Timesheets.
