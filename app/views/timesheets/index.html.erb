@@ -1,12 +1,14 @@
 <div class="container-body">
   <%= link_to "Create Timesheet Entry", new_timesheet_path,  { :class=>"button-create" } %>
   <h1>Timesheet Entries</h1>
+  <% if @timesheets.present? %>
   <ul>
     <% @timesheets.each do |timesheet| %>
-    <li class="timesheet-body">
-      <%= "#{timesheet.start_time.strftime("%d/%m/%Y")}: #{timesheet.start_time.strftime("%H:%M")} -
-      #{timesheet.finish_time.strftime("%H:%M")}  $#{timesheet.dollar_value}" %>
-    </li>
-    <% end %>
-  </ul>
+      <li class="timesheet-body">
+        <%= "#{timesheet.start_time.strftime("%d/%m/%Y")}: #{timesheet.start_time.strftime("%H:%M")} -
+        #{timesheet.finish_time.strftime("%H:%M")}  $#{timesheet.dollar_value}" %>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
