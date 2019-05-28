@@ -1,4 +1,3 @@
-require 'pry'
 class TimesheetsController < ApplicationController
   def index
     @timesheets = Timesheet.all

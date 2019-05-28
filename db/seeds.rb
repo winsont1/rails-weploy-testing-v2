@@ -1,4 +1,3 @@
-require 'pry'
 Timesheet.destroy_all
 
 puts "Creating 10 Fake Timesheets!"
